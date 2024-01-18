@@ -37,8 +37,8 @@ class _SplashState extends State<Splash> with SingleTickerProviderStateMixin {
     ),
   );
 
-  late final Animation _blinkAnimation =
-      TweenSequence([]).animate(_animationController);
+  // late final Animation _blinkAnimation =
+  //     TweenSequence([]).animate(_animationController);
 
   @override
   void dispose() {
@@ -68,7 +68,7 @@ class _SplashState extends State<Splash> with SingleTickerProviderStateMixin {
           ),
         ),
         Logo(
-          animation: _blinkAnimation,
+          // animation: _blinkAnimation,
         ),
       ],
     );

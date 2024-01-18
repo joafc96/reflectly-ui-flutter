@@ -1,39 +1,44 @@
 import 'package:flutter/material.dart';
 
-// achu
+// ACHU
 class Logo extends StatelessWidget {
-  final Animation animation;
+  final Animation? animation;
 
   const Logo({
     super.key,
-    required this.animation,
+    this.animation,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 200,
-      width: 200,
+      height: 100,
+      width: 100,
       clipBehavior: Clip.hardEdge,
       decoration: const BoxDecoration(
         color: Color(0xffEAF4FE),
-        shape: BoxShape.circle,
+        shape: BoxShape.rectangle,
         boxShadow: [
           BoxShadow(
             color: Colors.black54,
-            offset: Offset(0, 8),
-            blurRadius: 16,
+            offset: Offset(0, 12),
+            blurRadius: 8,
           )
         ],
       ),
       child: Stack(
         children: <Widget>[
-          Center(
-            child: Container(
-              width: 2,
-              color: const Color(0xffC3D1DD),
+          // center divider
+          const Center(
+            child: FractionallySizedBox(
+              widthFactor: 0.015,
+              child: ColoredBox(
+                color: Color(0xffD4E0EB),
+                child: SizedBox.expand(),
+              ),
             ),
           ),
+
           // Fore Head
           Align(
             alignment: Alignment.topCenter,
@@ -44,7 +49,7 @@ class Logo extends StatelessWidget {
                 builder: (context, constraints) {
                   return Container(
                     decoration: BoxDecoration(
-                      color: const Color(0xffC3D1DD),
+                      color: const Color(0xffC2D0DD),
                       borderRadius: BorderRadius.only(
                         bottomLeft: Radius.circular(
                           constraints.maxWidth / 4,
@@ -62,95 +67,93 @@ class Logo extends StatelessWidget {
 
           // Eyes and Mouth
           Align(
-            alignment: const Alignment(0, 0.25),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: <Widget>[
-                Flexible(
-                  flex: 2,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: <Widget>[
-                      Flexible(
-                        child: FractionallySizedBox(
-                          heightFactor: 0.3,
-                          widthFactor: 0.3,
-                          child: Container(
-                            decoration: const BoxDecoration(
-                              color: Color(0xff0C0C0C),
-                              shape: BoxShape.circle,
-                            ),
-                          ),
-                        ),
-                      ),
-                      Flexible(
-                        child: FractionallySizedBox(
-                          heightFactor: 0.3,
-                          widthFactor: 0.3,
-                          child: Container(
-                            decoration: const BoxDecoration(
-                              color: Color(0xff0C0C0C),
-                              shape: BoxShape.circle,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                const Flexible(
-                  flex: 1,
-                  child: FractionallySizedBox(
-                    heightFactor: 0.25,
-                  ),
-                ),
-                Flexible(
-                  flex: 3,
-                  child: FractionallySizedBox(
-                    heightFactor: 0.3,
-                    widthFactor: 0.3,
-                    child: LayoutBuilder(
-                      builder: (context, constraints) {
-                        return Container(
-                          alignment: Alignment.bottomCenter,
-                          decoration: BoxDecoration(
-                            color: const Color(0xff0C0C0C),
-                            borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(
-                                constraints.maxWidth / 12,
-                              ),
-                              topRight: Radius.circular(
-                                constraints.maxWidth / 12,
-                              ),
-                              bottomLeft: Radius.circular(
-                                constraints.maxWidth / 2,
-                              ),
-                              bottomRight: Radius.circular(
-                                constraints.maxWidth / 2,
-                              ),
-                            ),
-                          ),
+            alignment: const Alignment(0, 0.5),
+            child: FractionallySizedBox(
+              heightFactor: 0.3,
+              widthFactor: 1,
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
+                  // Eyes
+                  Flexible(
+                    flex: 1,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: <Widget>[
+                        Flexible(
                           child: FractionallySizedBox(
-                            heightFactor: 0.5,
-                            widthFactor: 0.5,
+                            heightFactor: 0.75,
                             child: Container(
-                              decoration: BoxDecoration(
-                                color: const Color(0xffFF8401),
-                                borderRadius: BorderRadius.all(
-                                  Radius.elliptical(
-                                    constraints.maxWidth,
-                                    constraints.maxHeight,
+                              decoration: const BoxDecoration(
+                                color: Color(0xff353457),
+                                shape: BoxShape.circle,
+                              ),
+                            ),
+                          ),
+                        ),
+                        Flexible(
+                          child: FractionallySizedBox(
+                            heightFactor: 0.75,
+                            child: Container(
+                              decoration: const BoxDecoration(
+                                color: Color(0xff353457),
+                                shape: BoxShape.circle,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+
+                  // Mouth
+                  Flexible(
+                    flex: 1,
+                    child: FractionallySizedBox(
+                      widthFactor: 0.3,
+                      child: LayoutBuilder(
+                        builder: (context, constraints) {
+                          return Container(
+                            alignment: const Alignment(0, 0.75),
+                            decoration: BoxDecoration(
+                              color: const Color(0xff353457),
+                              borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(
+                                  constraints.maxWidth / 6,
+                                ),
+                                topRight: Radius.circular(
+                                  constraints.maxWidth / 6,
+                                ),
+                                bottomLeft: Radius.circular(
+                                  constraints.maxWidth,
+                                ),
+                                bottomRight: Radius.circular(
+                                  constraints.maxWidth,
+                                ),
+                              ),
+                            ),
+                            child: FractionallySizedBox(
+                              heightFactor: 0.5,
+                              widthFactor: 0.5,
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  color: const Color(0xffED800A),
+                                  borderRadius: BorderRadius.all(
+                                    Radius.elliptical(
+                                      constraints.maxWidth,
+                                      constraints.maxHeight,
+                                    ),
                                   ),
                                 ),
                               ),
                             ),
-                          ),
-                        );
-                      },
+                          );
+                        },
+                      ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ],
@@ -158,3 +161,5 @@ class Logo extends StatelessWidget {
     );
   }
 }
+
+// #B8C4CF
