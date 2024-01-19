@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 import 'logo.dart';
@@ -33,17 +35,72 @@ class _SplashState extends State<Splash> with SingleTickerProviderStateMixin {
   late final AnimationController _animationController = AnimationController(
     vsync: this,
     duration: const Duration(
-      milliseconds: 250,
+      milliseconds: 300,
     ),
   );
 
-  // late final Animation _blinkAnimation =
-  //     TweenSequence([]).animate(_animationController);
+  late final Animation<double> _blinkAnimation = TweenSequence([
+    TweenSequenceItem<double>(
+        tween: Tween<double>(begin: 1.0, end: 0.0), weight: 10),
+    TweenSequenceItem<double>(
+        tween: Tween<double>(begin: 0.0, end: 1.0), weight: 90),
+  ]).animate(_animationController);
+
+  int animationCounter = 0;
+  late Timer _timer;
+
+  @override
+  void initState() {
+  // Run animation in init
+    _regularAnimation();
+
+    // Start the timer to call the animation function every 2 seconds
+    _timer = Timer.periodic(const Duration(seconds: 2), (Timer t) {
+      _callAnimation();
+    });
+
+    super.initState();
+  }
 
   @override
   void dispose() {
     _animationController.dispose();
+    _timer.cancel();
+
     super.dispose();
+  }
+
+  void _callAnimation() {
+    setState(() {
+      // Increment the counter
+      animationCounter++;
+
+      // Determine which animation to call based on the counter
+      if (animationCounter % 3 == 0) {
+        // Call the third animation
+        _thirdAnimation();
+      } else {
+        // Call the regular animation
+        _regularAnimation();
+      }
+    });
+  }
+
+  void _regularAnimation() {
+    // Your regular animation logic goes here
+    print('Regular Animation');
+    _animationController.reset();
+    _animationController.forward();
+  }
+
+  void _thirdAnimation() {
+    // Your special third animation logic goes here
+    print('Special Third Animation');
+    _animationController.reset();
+    _animationController.forward().then((value) {
+      _animationController.reset();
+      _animationController.forward();
+    });
   }
 
   @override
@@ -68,7 +125,7 @@ class _SplashState extends State<Splash> with SingleTickerProviderStateMixin {
           ),
         ),
         Logo(
-          // animation: _blinkAnimation,
+          blinkAnimation: _blinkAnimation,
         ),
       ],
     );

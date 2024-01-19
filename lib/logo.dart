@@ -2,18 +2,18 @@ import 'package:flutter/material.dart';
 
 // ACHU
 class Logo extends StatelessWidget {
-  final Animation? animation;
+  final Animation<double> blinkAnimation;
 
   const Logo({
     super.key,
-    this.animation,
+    required this.blinkAnimation,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 100,
-      width: 100,
+      height: 300,
+      width: 300,
       clipBehavior: Clip.hardEdge,
       decoration: const BoxDecoration(
         color: Color(0xffEAF4FE),
@@ -39,7 +39,7 @@ class Logo extends StatelessWidget {
             ),
           ),
 
-          // Fore Head
+          // ForeHead
           Align(
             alignment: Alignment.topCenter,
             child: FractionallySizedBox(
@@ -67,11 +67,11 @@ class Logo extends StatelessWidget {
 
           // Eyes and Mouth
           Align(
-            alignment: const Alignment(0, 0.5),
+            alignment: const Alignment(0, 0.3),
             child: FractionallySizedBox(
-              heightFactor: 0.3,
-              widthFactor: 1,
+              heightFactor: 0.35,
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
                   // Eyes
@@ -81,8 +81,8 @@ class Logo extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: <Widget>[
                         Flexible(
-                          child: FractionallySizedBox(
-                            heightFactor: 0.75,
+                          child: FadeTransition(
+                            opacity: blinkAnimation,
                             child: Container(
                               decoration: const BoxDecoration(
                                 color: Color(0xff353457),
@@ -92,8 +92,8 @@ class Logo extends StatelessWidget {
                           ),
                         ),
                         Flexible(
-                          child: FractionallySizedBox(
-                            heightFactor: 0.75,
+                          child: FadeTransition(
+                            opacity: blinkAnimation,
                             child: Container(
                               decoration: const BoxDecoration(
                                 color: Color(0xff353457),
@@ -108,9 +108,10 @@ class Logo extends StatelessWidget {
 
                   // Mouth
                   Flexible(
-                    flex: 1,
+                    flex: 2,
                     child: FractionallySizedBox(
                       widthFactor: 0.3,
+                      heightFactor: 0.8,
                       child: LayoutBuilder(
                         builder: (context, constraints) {
                           return Container(
