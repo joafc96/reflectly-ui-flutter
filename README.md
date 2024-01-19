@@ -1,16 +1,32 @@
-# reflectly_ui
+<h1 align="center"> Reflectly Like Login Page</h1>
 
-A new Flutter project.
+<p align="center">
+   <a href="https://github.com/joafc96">
+    </h1>Github</h1>
+  </a>
 
-## Getting Started
+</p>
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
+## 📱 Gif #
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+![](https://github.com/RenatoLucasMota/ReflectlyDesignInspiration/blob/master/gif/gif1.gif?raw=true)
+
+![](https://github.com/RenatoLucasMota/ReflectlyDesignInspiration/blob/master/gif/gif2.gif?raw=true)
+
+## 🖥 Flutter Tutorial
+All Flutter Tutorials plus additional Code and shorter posts can be found on the (https://www.youtube.com/channel/UCd-vLa_qcKve3CsDFlYiygA).
+
+## ⚙️ Built with Amazing Tools
+* [Flutter](https://flutter.dev/) - Beautiful native apps in record time.
+* [Android Studio](https://developer.android.com/studio/index.html/) - Tools for building Awesome apps on every type of Android device.
+* [Visual Studio Code](https://code.visualstudio.com/) - Code editing. Redefined.
+
+
+## 🤝 Show Some Support #
+If you liked the app give this repo a ⭐️
+
+
+## 🐞 Bugs/Requests #
+If you encounter any problems feel free to open an issue. If you feel the library is missing a feature, please raise a ticket on Github and I'll look into it. Pull request are also welcome.
