@@ -10,10 +10,7 @@
 
 ## 📱 Gif #
 
-
-![](https://github.com/RenatoLucasMota/ReflectlyDesignInspiration/blob/master/gif/gif1.gif?raw=true)
-
-![](https://github.com/RenatoLucasMota/ReflectlyDesignInspiration/blob/master/gif/gif2.gif?raw=true)
+![](https://github.com/joafc96/reflectly_ui/blob/main/gif/logo-blink.gif)
 
 ## 🖥 Flutter Tutorial
 All Flutter Tutorials plus additional Code and shorter posts can be found on the (https://www.youtube.com/channel/UCd-vLa_qcKve3CsDFlYiygA).
