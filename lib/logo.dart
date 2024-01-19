@@ -1,23 +1,25 @@
 import 'package:flutter/material.dart';
 
-// ACHU
+// achu
 class Logo extends StatelessWidget {
-  final Animation<double> blinkAnimation;
+  final Animation<double> fadeAnimation;
+  final Animation<double> sizeAnimation;
 
   const Logo({
     super.key,
-    required this.blinkAnimation,
+    required this.fadeAnimation,
+    required this.sizeAnimation,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 300,
-      width: 300,
+      height: 120,
+      width: 120,
       clipBehavior: Clip.hardEdge,
       decoration: const BoxDecoration(
         color: Color(0xffEAF4FE),
-        shape: BoxShape.rectangle,
+        shape: BoxShape.circle,
         boxShadow: [
           BoxShadow(
             color: Colors.black54,
@@ -67,42 +69,37 @@ class Logo extends StatelessWidget {
 
           // Eyes and Mouth
           Align(
-            alignment: const Alignment(0, 0.3),
+            alignment: const Alignment(0, 0.5),
             child: FractionallySizedBox(
               heightFactor: 0.35,
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                mainAxisSize: MainAxisSize.min,
+                // mainAxisAlignment: MainAxisAlignment.start,
+                // mainAxisSize: MainAxisSize.min,
+                // crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
                   // Eyes
                   Flexible(
                     flex: 1,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: <Widget>[
-                        Flexible(
-                          child: FadeTransition(
-                            opacity: blinkAnimation,
-                            child: Container(
-                              decoration: const BoxDecoration(
-                                color: Color(0xff353457),
-                                shape: BoxShape.circle,
-                              ),
+                    child: FractionallySizedBox(
+                      heightFactor: 1,
+                      widthFactor: 1,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Flexible(
+                            child: Eye(
+                              fadeAnimation: fadeAnimation,
+                              sizeAnimation: sizeAnimation,
                             ),
                           ),
-                        ),
-                        Flexible(
-                          child: FadeTransition(
-                            opacity: blinkAnimation,
-                            child: Container(
-                              decoration: const BoxDecoration(
-                                color: Color(0xff353457),
-                                shape: BoxShape.circle,
-                              ),
+                          Flexible(
+                            child: Eye(
+                              fadeAnimation: fadeAnimation,
+                              sizeAnimation: sizeAnimation,
                             ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
 
@@ -164,3 +161,31 @@ class Logo extends StatelessWidget {
 }
 
 // #B8C4CF
+
+class Eye extends StatelessWidget {
+  final Animation<double> fadeAnimation;
+  final Animation<double> sizeAnimation;
+
+  const Eye({
+    super.key,
+    required this.fadeAnimation,
+    required this.sizeAnimation,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return LayoutBuilder(builder: (context, constraints) {
+      return SizeTransition(
+        sizeFactor: sizeAnimation,
+        child: const SizedBox.expand(
+          child:  DecoratedBox(
+            decoration:  BoxDecoration(
+              color: Color(0xff353457),
+              shape: BoxShape.circle,
+            ),
+          ),
+        ),
+      );
+    });
+  }
+}

@@ -1,19 +1,9 @@
 <h1 align="center"> Reflectly Like Login Page</h1>
 
-<p align="center">
-   <a href="https://github.com/joafc96">
-    </h1>Github</h1>
-  </a>
-
-</p>
-
-
 ## 📱 Gif #
 
 ![](https://github.com/joafc96/reflectly_ui/blob/main/gif/logo-blink.gif)
 
-## 🖥 Flutter Tutorial
-All Flutter Tutorials plus additional Code and shorter posts can be found on the (https://www.youtube.com/channel/UCd-vLa_qcKve3CsDFlYiygA).
 
 ## ⚙️ Built with Amazing Tools
 * [Flutter](https://flutter.dev/) - Beautiful native apps in record time.

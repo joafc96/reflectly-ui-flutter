@@ -16,6 +16,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Reflectly UI',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
@@ -32,26 +33,38 @@ class Splash extends StatefulWidget {
 }
 
 class _SplashState extends State<Splash> with SingleTickerProviderStateMixin {
+  int animationCounter = 0;
+  late Timer _timer;
+
+  static const _animationDuration = Duration(milliseconds: 300);
+
   late final AnimationController _animationController = AnimationController(
     vsync: this,
-    duration: const Duration(
-      milliseconds: 300,
-    ),
+    duration: _animationDuration,
   );
 
-  late final Animation<double> _blinkAnimation = TweenSequence([
+  late final Animation<double> _fadeAnimation = TweenSequence([
     TweenSequenceItem<double>(
         tween: Tween<double>(begin: 1.0, end: 0.0), weight: 10),
     TweenSequenceItem<double>(
         tween: Tween<double>(begin: 0.0, end: 1.0), weight: 90),
   ]).animate(_animationController);
 
-  int animationCounter = 0;
-  late Timer _timer;
+  late final Animation<double> _sizeAnimation = TweenSequence([
+    TweenSequenceItem<double>(
+        tween: Tween<double>(begin: 1.0, end: 0.1), weight: 20),
+    TweenSequenceItem<double>(
+        tween: Tween<double>(begin: 0.1, end: 1.0), weight: 80),
+  ]).animate(
+    CurvedAnimation(
+      parent: _animationController,
+      curve: Curves.easeInOut,
+    ),
+  );
 
   @override
   void initState() {
-  // Run animation in init
+    // Run animation in init
     _regularAnimation();
 
     // Start the timer to call the animation function every 2 seconds
@@ -87,14 +100,12 @@ class _SplashState extends State<Splash> with SingleTickerProviderStateMixin {
   }
 
   void _regularAnimation() {
-    // Your regular animation logic goes here
     print('Regular Animation');
     _animationController.reset();
     _animationController.forward();
   }
 
   void _thirdAnimation() {
-    // Your special third animation logic goes here
     print('Special Third Animation');
     _animationController.reset();
     _animationController.forward().then((value) {
@@ -110,22 +121,23 @@ class _SplashState extends State<Splash> with SingleTickerProviderStateMixin {
     return Stack(
       alignment: Alignment.center,
       children: [
-        Container(
-          height: screenSize.height,
-          width: screenSize.width,
-          decoration: const BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              colors: [
-                Colors.deepPurpleAccent,
-                Colors.deepPurple,
-              ],
+        const SizedBox.expand(
+          child: DecoratedBox(
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [
+                  Colors.deepPurpleAccent,
+                  Colors.deepPurple,
+                ],
+              ),
             ),
           ),
         ),
         Logo(
-          blinkAnimation: _blinkAnimation,
+          fadeAnimation: _fadeAnimation,
+          sizeAnimation: _sizeAnimation,
         ),
       ],
     );
