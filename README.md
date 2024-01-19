@@ -2,7 +2,7 @@
 
 ## 📱 Gif #
 
-![](https://github.com/joafc96/reflectly_ui/blob/main/gif/logo-blink.gif)
+![](https://github.com/joafc96/reflectly_ui/blob/main/gif/logo_blink.gif)
 
 
 ## ⚙️ Built with Amazing Tools
